@@ -16,9 +16,10 @@ myData<-read.csv.sql(textFile,sql="select * from file where Date='1/2/2007' OR D
 timevector1<-paste(myData[,"Date"],myData[,"Time"])
 myData$PosixTime <- strptime(timevector1,format="%d/%m/%Y %H:%M:%S")
 
-
-png(file="plot4.png",width=480,height=480)
+# this gets all 4 necessary plots. notice the third plot has
+# two more 'lines' and a 'legend'
 par(mfrow=c(2,2))
+png(file="plot4.png",width=480,height=480)
 with(myData, {
   plot(PosixTime,Global_active_power,type="l",xlab="",ylab="Global Active Power")
   plot(PosixTime,Voltage,type="l",xlab="datetime",ylab="Voltage")

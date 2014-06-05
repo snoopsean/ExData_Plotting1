@@ -18,6 +18,7 @@ myData$PosixTime <- strptime(timevector1,format="%d/%m/%Y %H:%M:%S")
 
 # this draws the plot for meter1, then add the lines for the other meters to the
 # same plot. it then adds a legend, then closes the file
+par(mfrow=c(1,1))
 png(file="plot3.png",width=480,height=480)
 plot(myData[,"PosixTime"],myData[,"Sub_metering_1"],type="l",xlab="",ylab="Energy sub metering")
 lines(myData[,"PosixTime"],myData[,"Sub_metering_2"],col="red")

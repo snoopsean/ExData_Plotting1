@@ -17,6 +17,7 @@ timevector1<-paste(myData[,"Date"],myData[,"Time"])
 myData$PosixTime <- strptime(timevector1,format="%d/%m/%Y %H:%M:%S")
 
 # this gets a line plot of Time vs Global-active-power
+par(mfrow=c(1,1))
 png(file="plot2.png",width=480,height=480)
 plot(myData[,"PosixTime"],myData[,"Global_active_power"],type="l",xlab="",ylab="Global Active Power (kilowatts)")
 dev.off()
