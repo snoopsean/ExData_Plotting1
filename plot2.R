@@ -1,4 +1,4 @@
-#plot1.R
+#plot2.R
 
 #this section downloads the zip file and unzips it into the directory
 zipUrl<-"http://d396qusza40orc.cloudfront.net/exdata/data/household_power_consumption.zip"
@@ -12,10 +12,11 @@ textFile<-"household_power_consumption.txt"
 library(sqldf)
 myData<-read.csv.sql(textFile,sql="select * from file where Date='1/2/2007' OR Date='2/2/2007'",header=TRUE,sep=";")
 
-# this section sets the file where the plot will be saved, runs the plot, the
-# closes the device
-png(file="plot1.png",width=480,height=480)
-hist(myData$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (kilowatts)")
-dev.off()
+#this gets the POSIX time format, and adds that as a column to our myData data.frame
+timevector1<-paste(myData[,"Date"],myData[,"Time"])
+myData$PosixTime <- strptime(timevector1,format="%d/%m/%Y %H:%M:%S")
 
-#data<-read.table("./household_power_consumption.txt",header=TRUE,sep=";",na.strings="?")
+# this gets a line plot of Time vs Global-active-power
+png(file="plot2.png",width=480,height=480)
+plot(myData[,"PosixTime"],myData[,"Global_active_power"],type="l",xlab="",ylab="Global Active Power (kilowatts)")
+dev.off()
