@@ -14,7 +14,7 @@ myData<-read.csv.sql(textFile,sql="select * from file where Date='1/2/2007' OR D
 
 # this section sets the file where the plot will be saved, runs the plot, the
 # closes the device
-par(mfrow=c(1,1))
 png(file="plot1.png",width=480,height=480)
+par(mfrow=c(1,1))
 hist(myData$Global_active_power,col="red",main="Global Active Power",xlab="Global Active Power (kilowatts)")
 dev.off()

@@ -18,8 +18,8 @@ myData$PosixTime <- strptime(timevector1,format="%d/%m/%Y %H:%M:%S")
 
 # this gets all 4 necessary plots. notice the third plot has
 # two more 'lines' and a 'legend'
-par(mfrow=c(2,2))
 png(file="plot4.png",width=480,height=480)
+par(mfrow=c(2,2))
 with(myData, {
   plot(PosixTime,Global_active_power,type="l",xlab="",ylab="Global Active Power")
   plot(PosixTime,Voltage,type="l",xlab="datetime",ylab="Voltage")
